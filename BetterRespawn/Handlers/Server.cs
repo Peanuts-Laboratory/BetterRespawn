@@ -38,67 +38,13 @@
         }
 
 
-        private bool computerExists(List<Player> scp_list)
-        {
-            foreach (var ply in scp_list)
-            {
-                if (ply.Role == RoleType.Scp079)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-
         private List<Player> swapSCPToDclass(List<Player> scp_list, int correct_number_scps)
         {
             List<Player> new_dboy_list = new List<Player>();
-
-            // If the number of scps should be 1 and computer exists
-            if (correct_number_scps <= 1 && computerExists(scp_list))
-            {
-                // if computer is the only scp
-                if (scp_list.Count() == 0)
-                {
-                    if (BetterRespawn.Instance.Config.debug) { Log.Info("Computer is the only scp, swapping them to a new scp"); }
-
-                    foreach (var ply in Player.List)
-                    {
-                        // Change them to the dog and return
-                        if (ply.Role == RoleType.Scp079)
-                        {
-                            if (BetterRespawn.Instance.Config.debug) { Log.Info($"{ply.Nickname} (Computer) has been swapped"); }
-
-                            ply.SetRole(RoleType.Scp93989);
-                            return new_dboy_list;
-                        }
-                    }
-                }
-                // if the only scps are computer and another
-                if (scp_list.Count() == 1)
-                {
-                    if (BetterRespawn.Instance.Config.debug) { Log.Info("There are two scps, removing computer"); }
-
-                    foreach (var ply in Player.List)
-                    {
-                        // change computer to a dclass
-                        if (ply.Role == RoleType.Scp079)
-                        {
-                            if (BetterRespawn.Instance.Config.debug) { Log.Info($"{ply.Nickname} (Computer) has been removed"); }
-
-                            ply.SetRole(RoleType.ClassD);
-                            new_dboy_list.Add(ply);
-                            return new_dboy_list;
-                        }
-                    }
-                }
-            }
-            
-            // else, remove random scps until we have the correct amount of scps
+            // remove random scps until we have the correct amount of scps
             while (scp_list.Count() > correct_number_scps-1)
             {
-                int index = UnityEngine.Random.Range(0, scp_list.Count() - 1);
+                int index = UnityEngine.Random.Range(0, scp_list.Count()-1);
 
                 if (BetterRespawn.Instance.Config.debug) { Log.Info($"Removing {scp_list[index].Nickname} as role {scp_list[index].Role} at index {index}"); }
 
@@ -114,9 +60,13 @@
         {
             foreach (var ply in new_dboy_list)
             {
-                if (BetterRespawn.Instance.Config.debug) { Log.Info($"Setting {ply.Nickname} hp to 100"); }
+                Timing.CallDelayed(0.5f, () =>
+                {
+                    if (BetterRespawn.Instance.Config.debug) { Log.Info($"Setting {ply.Nickname} hp to 100"); }
 
-                ply.MaxHealth = 100;
+                    ply.MaxHealth = 100;
+                    ply.Health = 100;
+                });
             }
         }
 
