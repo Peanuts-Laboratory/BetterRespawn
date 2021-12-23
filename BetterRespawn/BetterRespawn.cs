@@ -9,7 +9,7 @@
     {
         private static readonly Lazy<BetterRespawn> LazyInstance = new Lazy<BetterRespawn>(valueFactory: () => new BetterRespawn());
         public static BetterRespawn Instance => LazyInstance.Value;
-        public override PluginPriority Priority { get; } = PluginPriority.Low;
+        public override PluginPriority Priority { get; } = PluginPriority.Higher;
 
         private Handlers.Server server;
 
@@ -39,13 +39,15 @@
 
             Server.WaitingForPlayers += server.OnWaitingForPlayers;
             Server.RespawningTeam += server.RespawnTicketChecker;
+            Server.RoundStarted += server.BalanceSCPSpawnrate;
         }
 
 
         public void UnregisterEvents()
         {
             Server.WaitingForPlayers -= server.OnWaitingForPlayers;
-            Server.RespawningTeam += server.RespawnTicketChecker;
+            Server.RespawningTeam -= server.RespawnTicketChecker;
+            Server.RoundStarted -= server.BalanceSCPSpawnrate;
 
             server = null;
         }
