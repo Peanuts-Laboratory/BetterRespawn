@@ -18,7 +18,7 @@
 
             foreach (var ply in Player.List)
             {
-                if (BetterRespawn.Instance.Config.debug) { Log.Info($"{ply.Nickname} is scp: {ply.IsScp}"); }
+                //if (BetterRespawn.Instance.Config.debug) { Log.Info($"{ply.Nickname} is scp: {ply.IsScp}"); }
 
                 if (ply.IsScp)
                 {
