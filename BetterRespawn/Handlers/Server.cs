@@ -38,9 +38,9 @@
         }
 
 
-        private List<Player> SwapSCPToDclass(List<Player> scp_list, int correct_number_scps)
+        private List<Player> SwapSCPToScientist(List<Player> scp_list, int correct_number_scps)
         {
-            List<Player> new_dboy_list = new List<Player>();
+            List<Player> new_scientist_list = new List<Player>();
             // remove random scps until we have the correct amount of scps
             while (scp_list.Count() > correct_number_scps-1)
             {
@@ -48,17 +48,17 @@
 
                 if (BetterRespawn.Instance.Config.debug) { Log.Info($"Removing {scp_list[index].Nickname} as role {scp_list[index].Role} at index {index}"); }
 
-                scp_list[index].SetRole(RoleType.ClassD);
-                new_dboy_list.Add(scp_list[index]);
+                scp_list[index].SetRole(RoleType.Scientist);
+                new_scientist_list.Add(scp_list[index]);
                 scp_list.RemoveAt(index);
             }
-            return new_dboy_list;
+            return new_scientist_list;
         }
 
 
-        private void FixHealth(List<Player> new_dboy_list)
+        private void FixHealth(List<Player> new_scientist_list)
         {
-            foreach (var ply in new_dboy_list)
+            foreach (var ply in new_scientist_list)
             {
                 Timing.CallDelayed(0.5f, () =>
                 {
@@ -90,16 +90,20 @@
 
                 if (BetterRespawn.Instance.Config.debug) { Log.Info($"number_of_players: {number_of_players} | correct_number_scps {correct_number_scps}"); }
 
-                Timing.CallDelayed(0.07f, () =>
+                if (number_of_players > 10)
                 {
-                    List<Player> scp_list = GetSCPList();
-                    List<Player> new_dboy_list = SwapSCPToDclass(scp_list, correct_number_scps);
-
-                    Timing.CallDelayed(2f, () =>
+                    Timing.CallDelayed(0.07f, () =>
                     {
-                        FixHealth(new_dboy_list);
+                        List<Player> scp_list = GetSCPList();
+                        List<Player> new_scientist_list = SwapSCPToScientist(scp_list, correct_number_scps);
+
+                        Timing.CallDelayed(2f, () =>
+                        {
+                            FixHealth(new_scientist_list);
+                        });
                     });
-                });
+                }
+                
             }
         }
 
