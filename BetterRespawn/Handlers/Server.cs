@@ -111,7 +111,7 @@
             {
                 if (team == SpawnableTeamType.NineTailedFox)
                 {
-                    if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning ntf..."); }
+                    if (BetterRespawn.Instance.Config.debug) { Log.Info("Spawning ntf..."); }
                     int tickets = Respawn.NtfTickets;
                     while (tickets > 0)
                     {
