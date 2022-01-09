@@ -101,6 +101,16 @@
             Exiled Plugin Developer.
             </summary>
         </member>
+        <member name="F:Exiled.CreditTags.Enums.RankType.TournamentParticipant">
+            <summary>
+            EXILED Tournament Participant.
+            </summary>
+        </member>
+        <member name="F:Exiled.CreditTags.Enums.RankType.TournamentChampion">
+            <summary>
+            EXILED Tournament Champion.
+            </summary>
+        </member>
         <member name="T:Exiled.CreditTags.Events.CreditsHandler">
             <summary>
             Event Handlers for the <see cref="T:Exiled.CreditTags.CreditTags"/> plugin of Exiled.

@@ -409,7 +409,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.AimingDownSightEventArgs.Firearm">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.AimingDownSightEventArgs.Firearm"/> used to trigger the aim action.
+            Gets the <see cref="T:Exiled.API.Features.Items.Firearm"/> used to trigger the aim action.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.AimingDownSightEventArgs.Player">
@@ -621,7 +621,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.BlinkingEventArgs.IsAllowed">
             <summary>
-            Gets or sets a value indicating whether the player is allowed to blink.
+            Gets or sets a value indicating whether or not the player is allowed to blink.
             </summary>
         </member>
         <member name="T:Exiled.Events.EventArgs.CalmingDownEventArgs">
@@ -1600,7 +1600,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.DryfiringWeaponEventArgs.Firearm">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.DryfiringWeaponEventArgs.Firearm"/> being dryfired.
+            Gets the <see cref="T:Exiled.API.Features.Items.Firearm"/> being dryfired.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.DryfiringWeaponEventArgs.Player">
@@ -2120,7 +2120,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.GainingLevelEventArgs.NewLevel">
             <summary>
-            Gets or sets the new level of SCP-079.
+            Gets or sets SCP-079's new level.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.GainingLevelEventArgs.IsAllowed">
@@ -2256,7 +2256,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingDoorEventArgs.Door">
             <summary>
-            Gets or sets the <see cref="P:Exiled.Events.EventArgs.InteractingDoorEventArgs.Door"/> instance.
+            Gets or sets the <see cref="T:Exiled.API.Features.Door"/> instance.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingDoorEventArgs.IsAllowed">
@@ -2285,17 +2285,17 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingElevatorEventArgs.Elevator">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.InteractingElevatorEventArgs.Elevator"/> instance.
+            Gets the <see cref="T:Lift.Elevator"/> instance.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingElevatorEventArgs.Lift">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.InteractingElevatorEventArgs.Lift"/> instance.
+            Gets the <see cref="T:Lift"/> instance.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingElevatorEventArgs.Status">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.InteractingElevatorEventArgs.Lift"/> current <see cref="P:Exiled.Events.EventArgs.InteractingElevatorEventArgs.Status"/>.
+            Gets the <see cref="T:Lift"/>'s current <see cref="T:Lift.Status"/>.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingElevatorEventArgs.IsAllowed">
@@ -2325,7 +2325,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingLockerEventArgs.Locker">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.InteractingLockerEventArgs.Locker"/> instance.
+            Gets the <see cref="T:MapGeneration.Distributors.Locker"/> instance.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingLockerEventArgs.Chamber">
@@ -2341,6 +2341,38 @@
         <member name="P:Exiled.Events.EventArgs.InteractingLockerEventArgs.IsAllowed">
             <summary>
             Gets or sets a value indicating whether or not the player can interact with the locker.
+            </summary>
+        </member>
+        <member name="T:Exiled.Events.EventArgs.InteractingScp330EventArgs">
+            <summary>
+            Contains all information before a player interacts with SCP-330.
+            </summary>
+        </member>
+        <member name="M:Exiled.Events.EventArgs.InteractingScp330EventArgs.#ctor(Exiled.API.Features.Player,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.Events.EventArgs.InteractingScp330EventArgs"/> class.
+            </summary>
+            <param name="player"><inheritdoc cref="P:Exiled.Events.EventArgs.InteractingScp330EventArgs.Player"/></param>
+            <param name="usage"><inheritdoc cref="P:Exiled.Events.EventArgs.InteractingScp330EventArgs.UsageCount"/></param>
+        </member>
+        <member name="P:Exiled.Events.EventArgs.InteractingScp330EventArgs.Player">
+            <summary>
+            Gets the <see cref="T:Exiled.API.Features.Player"/> triggering the event.
+            </summary>
+        </member>
+        <member name="P:Exiled.Events.EventArgs.InteractingScp330EventArgs.UsageCount">
+            <summary>
+            Gets a value indicating how many times this player has interacted with SCP-330.
+            </summary>
+        </member>
+        <member name="P:Exiled.Events.EventArgs.InteractingScp330EventArgs.ShouldSever">
+            <summary>
+            Gets or sets a value indicating whether the player's hands should get severed.
+            </summary>
+        </member>
+        <member name="P:Exiled.Events.EventArgs.InteractingScp330EventArgs.IsAllowed">
+            <summary>
+            Gets or sets a value indicating whether the player is allowed to interact with SCP-330.
             </summary>
         </member>
         <member name="T:Exiled.Events.EventArgs.InteractingShootingTargetEventArgs">
@@ -2376,7 +2408,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingShootingTargetEventArgs.NewMaxHp">
             <summary>
-            Gets or sets the new max hp of the target.
+            Gets or sets the new max HP of the target.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.InteractingShootingTargetEventArgs.NewAutoResetTime">
@@ -2754,14 +2786,12 @@
             Contains all informations before a player interacts with SCP-330.
             </summary>
         </member>
-        <member name="M:Exiled.Events.EventArgs.PickingUpScp330EventArgs.#ctor(Exiled.API.Features.Player,System.Int32,ItemType,System.Boolean)">
+        <member name="M:Exiled.Events.EventArgs.PickingUpScp330EventArgs.#ctor(Exiled.API.Features.Player,InventorySystem.Items.Usables.Scp330.Scp330Pickup)">
             <summary>
             Initializes a new instance of the <see cref="T:Exiled.Events.EventArgs.PickingUpScp330EventArgs"/> class.
             </summary>
             <param name="player"><inheritdoc cref="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.Player"/></param>
-            <param name="usage"><inheritdoc cref="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.Usage"/></param>
-            <param name="item"><inheritdoc cref="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.ItemId"/></param>
-            <param name="isAllowed"><inheritdoc cref="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.IsAllowed"/></param>
+            <param name="pickup"><inheritdoc cref="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.Pickup"/></param>
         </member>
         <member name="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.Player">
             <summary>
@@ -2773,19 +2803,9 @@
             Gets or sets a value indicating whether or not the player can interact with SCP-330.
             </summary>
         </member>
-        <member name="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.Usage">
+        <member name="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.Pickup">
             <summary>
-            Gets or sets player's pickup counter.
-            </summary>
-        </member>
-        <member name="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.IsSevere">
-            <summary>
-            Gets or sets a value indicating whether or not the interaction should be severe.
-            </summary>
-        </member>
-        <member name="P:Exiled.Events.EventArgs.PickingUpScp330EventArgs.ItemId">
-            <summary>
-            Gets or sets a value indicating what item will be picked up.
+            Gets or sets a value representing the <see cref="T:InventorySystem.Items.Usables.Scp330.Scp330Pickup"/> being picked up.
             </summary>
         </member>
         <member name="T:Exiled.Events.EventArgs.PlacingBloodEventArgs">
@@ -2887,7 +2907,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.PlacingTantrumEventArgs.GameObject">
             <summary>
-            Gets the tantrum <see cref="P:Exiled.Events.EventArgs.PlacingTantrumEventArgs.GameObject"/>.
+            Gets the tantrum <see cref="T:UnityEngine.GameObject"/>.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.PlacingTantrumEventArgs.Cooldown">
@@ -2897,7 +2917,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.PlacingTantrumEventArgs.IsAllowed">
             <summary>
-            Gets or sets a value indicating whether the tantrum can be placed or not.
+            Gets or sets a value indicating whether or not the tantrum can be placed.
             </summary>
         </member>
         <member name="T:Exiled.Events.EventArgs.PreAuthenticatingEventArgs">
@@ -3085,7 +3105,7 @@
         </member>
         <member name="T:Exiled.Events.EventArgs.RecontainedEventArgs">
             <summary>
-            Contains informations after SCP-079 recontainming.
+            Contains informations after SCP-079 recontainment.
             </summary>
         </member>
         <member name="M:Exiled.Events.EventArgs.RecontainedEventArgs.#ctor(Exiled.API.Features.Player)">
@@ -3113,7 +3133,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.ReloadingWeaponEventArgs.Firearm">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.ReloadingWeaponEventArgs.Firearm"/> being reloaded.
+            Gets the <see cref="T:Exiled.API.Features.Items.Firearm"/> being reloaded.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.ReloadingWeaponEventArgs.Player">
@@ -3338,12 +3358,12 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.ShotEventArgs.Target">
             <summary>
-            Gets the target of the shot. Can be null!.
+            Gets the target of the shot. Can be <see langword="null"/>!.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.ShotEventArgs.Hitbox">
             <summary>
-            Gets the hitbox type of the shot. Can be null!.
+            Gets the hitbox type of the shot. Can be <see langword="null"/>!.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.ShotEventArgs.Distance">
@@ -3816,7 +3836,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.TogglingWeaponFlashlightEventArgs.Firearm">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.TogglingWeaponFlashlightEventArgs.Firearm"/> being holded.
+            Gets the <see cref="T:Exiled.API.Features.Items.Firearm"/> being held.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.TogglingWeaponFlashlightEventArgs.Player">
@@ -3856,12 +3876,12 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.TransmittingEventArgs.Radio">
             <summary>
-            Gets the player's <see cref="P:Exiled.Events.EventArgs.TransmittingEventArgs.Radio"/> component.
+            Gets the player's <see cref="T:Radio"/> component.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.TransmittingEventArgs.DissonanceUserSetup">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.TransmittingEventArgs.Radio"/>'s DissonanceUserSetup.
+            Gets the <see cref="T:Radio"/>'s DissonanceUserSetup.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.TransmittingEventArgs.IsTransmitting">
@@ -3898,17 +3918,24 @@
             Contains all informations before triggering a tesla.
             </summary>
         </member>
-        <member name="M:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.#ctor(Exiled.API.Features.Player,System.Boolean,System.Boolean)">
+        <member name="M:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.#ctor(Exiled.API.Features.Player,TeslaGate,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:Exiled.Events.EventArgs.TriggeringTeslaEventArgs"/> class.
             </summary>
             <param name="player"><inheritdoc cref="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.Player"/></param>
+            <param name="tesla"><inheritdoc cref="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.Tesla"/></param>
             <param name="isInHurtingRange"><inheritdoc cref="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.IsInHurtingRange"/></param>
             <param name="isTriggerable"><inheritdoc cref="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.IsTriggerable"/></param>
+            <param name="isInIdleRange"><inheritdoc cref="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.IsInIdleRange"/></param>
         </member>
         <member name="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.Player">
             <summary>
             Gets the player who triggered the tesla.
+            </summary>
+        </member>
+        <member name="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.Tesla">
+            <summary>
+            Gets the Tesla.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.IsInHurtingRange">
@@ -3919,6 +3946,11 @@
         <member name="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.IsTriggerable">
             <summary>
             Gets or sets a value indicating whether or not the tesla is going to be activated.
+            </summary>
+        </member>
+        <member name="P:Exiled.Events.EventArgs.TriggeringTeslaEventArgs.IsInIdleRange">
+            <summary>
+            Gets or sets a value indicating whether or not the is going to be idle.
             </summary>
         </member>
         <member name="T:Exiled.Events.EventArgs.TryingNotToCryEventArgs">
@@ -3947,7 +3979,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.TryingNotToCryEventArgs.Door">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.TryingNotToCryEventArgs.Door"/> to be cried on.
+            Gets the <see cref="T:Exiled.API.Features.Door"/> to be cried on.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.TryingNotToCryEventArgs.IsAllowed">
@@ -3969,7 +4001,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.UnloadingWeaponEventArgs.Firearm">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.UnloadingWeaponEventArgs.Firearm"/> being unloaded.
+            Gets the <see cref="T:Exiled.API.Features.Items.Firearm"/> being unloaded.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.UnloadingWeaponEventArgs.Player">
@@ -4234,7 +4266,7 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.UsingRadioBatteryEventArgs.Radio">
             <summary>
-            Gets the Radio which is being used.
+            Gets the <see cref="T:Exiled.API.Features.Items.Radio"/> which is being used.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.UsingRadioBatteryEventArgs.Player">
@@ -4290,12 +4322,12 @@
         </member>
         <member name="P:Exiled.Events.EventArgs.VoiceChattingEventArgs.Radio">
             <summary>
-            Gets the player's <see cref="P:Exiled.Events.EventArgs.VoiceChattingEventArgs.Radio"/> component.
+            Gets the player's <see cref="T:Exiled.API.Features.Items.Radio"/> component.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.VoiceChattingEventArgs.DissonanceUserSetup">
             <summary>
-            Gets the <see cref="P:Exiled.Events.EventArgs.VoiceChattingEventArgs.Radio"/>'s DissonanceUserSetup.
+            Gets the <see cref="T:Exiled.API.Features.Items.Radio"/>'s DissonanceUserSetup.
             </summary>
         </member>
         <member name="P:Exiled.Events.EventArgs.VoiceChattingEventArgs.IsVoiceChatting">
@@ -5075,6 +5107,16 @@
             Invoked before a player toggles the NoClip mode.
             </summary>
         </member>
+        <member name="E:Exiled.Events.Handlers.Player.PickingUpScp330">
+            <summary>
+            Invoked before a player picks up a SCP-330 candy.
+            </summary>
+        </member>
+        <member name="E:Exiled.Events.Handlers.Player.InteractingScp330">
+            <summary>
+            Invoked before a player interacts with SCP-330.
+            </summary>
+        </member>
         <member name="M:Exiled.Events.Handlers.Player.OnPreAuthenticating(Exiled.Events.EventArgs.PreAuthenticatingEventArgs)">
             <summary>
             Called before pre-authenticating a player.
@@ -5538,6 +5580,18 @@
             </summary>
             <param name="ev">The <see cref="T:Exiled.Events.EventArgs.TogglingNoClipEventArgs"/> instance.</param>
         </member>
+        <member name="M:Exiled.Events.Handlers.Player.OnPickingUp330(Exiled.Events.EventArgs.PickingUpScp330EventArgs)">
+            <summary>
+            Called before a player picks up a SCP-330 candy.
+            </summary>
+            <param name="ev">The <see cref="T:Exiled.Events.EventArgs.PickingUpScp330EventArgs"/> instance.</param>
+        </member>
+        <member name="M:Exiled.Events.Handlers.Player.OnInteractingScp330(Exiled.Events.EventArgs.InteractingScp330EventArgs)">
+            <summary>
+            Called before a player interacts with SCP-330.
+            </summary>
+            <param name="ev">The <see cref="T:Exiled.Events.EventArgs.InteractingScp330EventArgs"/> instance.</param>
+        </member>
         <member name="T:Exiled.Events.Handlers.Scp049">
             <summary>
             SCP-049 related events.
@@ -5834,23 +5888,23 @@
         </member>
         <member name="E:Exiled.Events.Handlers.Scp330.EatingScp330">
             <summary>
-            Invoked before a player eats Scp330.
+            Invoked before a player eats a candy from SCP-330.
             </summary>
         </member>
         <member name="E:Exiled.Events.Handlers.Scp330.EatenScp330">
             <summary>
-            Invoked after the player has eaten Scp330.
+            Invoked after the player has eaten a candy from SCP-330.
             </summary>
         </member>
         <member name="M:Exiled.Events.Handlers.Scp330.OnEatingScp330(Exiled.Events.EventArgs.EatingScp330EventArgs)">
             <summary>
-            Called before a player eats Scp330.
+            Called before a player eats a candy from SCP-330.
             </summary>
             <param name="ev">The <see cref="T:Exiled.Events.EventArgs.EatingScp330EventArgs"/> instance.</param>
         </member>
         <member name="M:Exiled.Events.Handlers.Scp330.OnEatenScp330(Exiled.Events.EventArgs.EatenScp330EventArgs)">
             <summary>
-            Called after the player has eaten Scp330.
+            Called after the player has eaten a candy from SCP-330.
             </summary>
             <param name="ev">The <see cref="T:Exiled.Events.EventArgs.EatenScp330EventArgs"/> instance.</param>
         </member>
@@ -6666,6 +6720,16 @@
             <summary>
             Patches <see cref="M:InventorySystem.Items.Usables.Scp330.Scp330Bag.ServerOnUsingCompleted"/>.
             Adds the <see cref="E:Exiled.Events.Handlers.Scp330.EatingScp330"/> and <see cref="E:Exiled.Events.Handlers.Scp330.EatenScp330"/> event.
+            </summary>
+        </member>
+        <member name="T:Exiled.Events.Patches.Events.Scp330.InteractingScp330">
+            <summary>
+            Patches the <see cref="M:Interactables.Interobjects.Scp330Interobject.ServerInteract(ReferenceHub,System.Byte)"/> method to add the <see cref="E:Exiled.Events.Handlers.Player.InteractingScp330"/> event.
+            </summary>
+        </member>
+        <member name="T:Exiled.Events.Patches.Events.Scp330.PickingUp330">
+            <summary>
+            Patches the <see cref="M:InventorySystem.Items.Usables.Scp330.Scp330Bag.ServerProcessPickup(ReferenceHub,InventorySystem.Items.Usables.Scp330.Scp330Pickup,InventorySystem.Items.Usables.Scp330.Scp330Bag@)"/> method to add the <see cref="E:Exiled.Events.Handlers.Player.PickingUpScp330"/> event.
             </summary>
         </member>
         <member name="T:Exiled.Events.Patches.Events.Scp914.InteractingEvents">

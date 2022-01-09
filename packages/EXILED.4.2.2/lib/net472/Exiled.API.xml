@@ -925,17 +925,17 @@
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Burned">
             <summary>
-            Increases damage the player gets.
+            Increases damage the player receives. Does not apply any standalone damage.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Concussed">
             <summary>
-            Blurs the player's screen when rotating.
+            Blurs the player's screen while rotating.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Corroding">
             <summary>
-            Teleports the player to the pocket dimension and drains health.
+            Teleports the player to the pocket dimension and drains health until the player escapes or is killed.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Deafened">
@@ -955,7 +955,7 @@
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Ensnared">
             <summary>
-            Stops the player's movement.
+            Prevents the player from moving.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Exhausted">
@@ -985,32 +985,32 @@
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Poisoned">
             <summary>
-            Damages the player every 5 seconds, starting low and ramping hight.
+            Damages the player every 5 seconds, starting low and increasing over time.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Scp207">
             <summary>
-            Makes the player faster but also drains health.
+            Increases the speed of the player while also draining health.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Invisible">
             <summary>
-            Makes the player invisibility.
+            Makes the player invisible.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.SinkHole">
             <summary>
-            Slows down the player's movement with SCP-106 effect.
+            Slows down the player's movement with the SCP-106 sinkhole effect.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Visuals939">
             <summary>
-            Gives the player the sound vision of SCP-939.
+            Gives the player the SCP-939 sound vision.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.DamageReduction">
             <summary>
-            Reduces all damage taken.
+            Reduces overall damage taken.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.MovementBoost">
@@ -1030,7 +1030,7 @@
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Stained">
             <summary>
-            Stops the player from sprinting and reduces movement speed by 20%.
+            Prevents the player from sprinting and reduces movement speed by 20%.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Visual173Blink">
@@ -1178,12 +1178,12 @@
         </member>
         <member name="F:Exiled.API.Enums.KeycardPermissions.ExitGates">
             <summary>
-            Opens Exit Gates.
+            Opens <see cref="F:Exiled.API.Enums.DoorType.GateA">Gate A</see> and <see cref="F:Exiled.API.Enums.DoorType.GateB">Gate B</see>.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.KeycardPermissions.Intercom">
             <summary>
-            Opens the Intercom door.
+            Opens <see cref="F:Exiled.API.Enums.DoorType.Intercom">the Intercom door</see>.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.KeycardPermissions.AlphaWarhead">
@@ -1193,7 +1193,7 @@
         </member>
         <member name="F:Exiled.API.Enums.KeycardPermissions.ContainmentLevelOne">
             <summary>
-            Opens 914.
+            Opens <see cref="F:Exiled.API.Enums.DoorType.Scp914"/>.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.KeycardPermissions.ContainmentLevelTwo">
@@ -1233,17 +1233,17 @@
         </member>
         <member name="F:Exiled.API.Enums.LeadingTeam.FacilityForces">
             <summary>
-            Represents Scientists, Guards, and NTF.
+            Represents the Scientists, Guards, and NTF team.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.LeadingTeam.ChaosInsurgency">
             <summary>
-            Represents Class-D and Chaos Insurgency.
+            Represents the Class-D and Chaos Insurgency team.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.LeadingTeam.Anomalies">
             <summary>
-            Represents SCPs.
+            Represents the SCP team.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.LeadingTeam.Draw">
@@ -1407,12 +1407,12 @@
         </member>
         <member name="F:Exiled.API.Enums.RoomType.Lcz012">
             <summary>
-            Lower Containment SCP 012 Room.
+            Lower Containment SCP-012 Room.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.RoomType.Lcz914">
             <summary>
-            Lower Containment SCP 914 Room.
+            Lower Containment SCP-914 Room.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.RoomType.LczCrossing">
@@ -1447,12 +1447,12 @@
         </member>
         <member name="F:Exiled.API.Enums.RoomType.Lcz173">
             <summary>
-            Lower Containment SCP 173 Room.
+            Lower Containment SCP-173 Room.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.RoomType.LczClassDSpawn">
             <summary>
-            Lower Containment Class D Spawn Room.
+            Lower Containment Class-D Spawn Room.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.RoomType.LczChkpB">
@@ -1472,7 +1472,7 @@
         </member>
         <member name="F:Exiled.API.Enums.RoomType.Hcz079">
             <summary>
-            Heavy Containment SCP 079 Room.
+            Heavy Containment SCP-079 Room.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.RoomType.HczEzCheckpoint">
@@ -1487,7 +1487,7 @@
         </member>
         <member name="F:Exiled.API.Enums.RoomType.Hcz939">
             <summary>
-            Heavy Containment SCP 939 Room.
+            Heavy Containment SCP-939 Room.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.RoomType.HczHid">
@@ -1497,7 +1497,7 @@
         </member>
         <member name="F:Exiled.API.Enums.RoomType.Hcz049">
             <summary>
-            Heavy Containment SCP 049 Room.
+            Heavy Containment SCP-049 Room.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.RoomType.HczChkpA">
@@ -1512,7 +1512,7 @@
         </member>
         <member name="F:Exiled.API.Enums.RoomType.Hcz106">
             <summary>
-            Heavy Containment SCP 106 Room.
+            Heavy Containment SCP-106 Room.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.RoomType.HczNuke">
@@ -1547,7 +1547,7 @@
         </member>
         <member name="F:Exiled.API.Enums.RoomType.Hcz096">
             <summary>
-            Heavy Containment SCP 096 Room.
+            Heavy Containment SCP-096 Room.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.RoomType.EzVent">
@@ -1712,7 +1712,9 @@
         </member>
         <member name="F:Exiled.API.Enums.Side.Scp">
             <summary>
-            The same as <see cref="F:Team.SCP"/>.
+            SCP team. Same as <see cref="F:Team.SCP"/>.
+            Contains all SCP-related roles: <see cref="F:RoleType.Scp049"/>, <see cref="F:RoleType.Scp0492"/>, <see cref="F:RoleType.Scp079"/>, <see cref="F:RoleType.Scp096"/>,
+            <see cref="F:RoleType.Scp106"/>, <see cref="F:RoleType.Scp173"/>, <see cref="F:RoleType.Scp93953"/>, and <see cref="F:RoleType.Scp93989"/>.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.Side.Mtf">
@@ -1730,12 +1732,12 @@
         </member>
         <member name="F:Exiled.API.Enums.Side.Tutorial">
             <summary>
-            <see cref="F:Team.TUT"/>.
+            Tutorial team. Contains <see cref="F:RoleType.Tutorial"/>. Same as <see cref="F:Team.TUT"/>.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.Side.None">
             <summary>
-            <see cref="F:Team.RIP"/>.
+            No team. Same as <see cref="F:Team.RIP"/>.
             </summary>
         </member>
         <member name="T:Exiled.API.Enums.SightType">
@@ -1815,7 +1817,7 @@
         </member>
         <member name="F:Exiled.API.Enums.SpawnReason.Revived">
             <summary>
-            The player was revived by 049.
+            The player was revived by SCP-049.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.SpawnReason.ForceClass">
@@ -1875,7 +1877,7 @@
         </member>
         <member name="F:Exiled.API.Enums.ZoneType.Unspecified">
             <summary>
-            An unknown zone.
+            An unspecified zone.
             </summary>
         </member>
         <member name="T:Exiled.API.Extensions.CameraExtensions">
@@ -2385,7 +2387,7 @@
             <summary>
             Compares two <see cref="T:UserGroup"/>'s for equality.
             </summary>
-            <param name="this">The fist <see cref="T:UserGroup"/>.</param>
+            <param name="this">The first <see cref="T:UserGroup"/>.</param>
             <param name="other">The second <see cref="T:UserGroup"/>.</param>
             <returns><c>true</c> if they are equal; otherwise, <c>false</c>.</returns>
         </member>
@@ -2478,7 +2480,7 @@
         </member>
         <member name="T:Exiled.API.Features.Cassie">
             <summary>
-            A set of tools to use in-game C.A.S.S.I.E more easily.
+            A set of tools to use in-game C.A.S.S.I.E.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Cassie.IsSpeaking">
@@ -2530,7 +2532,7 @@
         </member>
         <member name="M:Exiled.API.Features.Cassie.ConvertTeam(Team,System.String)">
             <summary>
-            Converts a Team into a Cassie-Readable CONTAINMENTUNIT.
+            Converts a Team into a Cassie-Readable <c>CONTAINMENTUNIT</c>.
             </summary>
             <param name="team"><see cref="T:Team"/>.</param>
             <param name="unitName">Unit Name.</param>
@@ -2698,6 +2700,11 @@
             Gets a value indicating whether or not this door is breakable.
             </summary>
         </member>
+        <member name="P:Exiled.API.Features.Door.IsBroken">
+            <summary>
+            Gets a value indicating whether or not this door is broken.
+            </summary>
+        </member>
         <member name="P:Exiled.API.Features.Door.InstanceId">
             <summary>
             Gets the door's Instance ID.
@@ -2715,12 +2722,12 @@
         </member>
         <member name="P:Exiled.API.Features.Door.MaxHealth">
             <summary>
-            Gets or sets the max health of the door, if it is breakable.
+            Gets or sets the max health of the door. No effect if the door cannot be broken.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Door.Health">
             <summary>
-            Gets or sets the door's remaining health, if it is breakable.
+            Gets or sets the door's remaining health. No effect if the door cannot be broken.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Door.IgnoredDamageTypes">
@@ -2747,23 +2754,23 @@
         </member>
         <member name="M:Exiled.API.Features.Door.BreakDoor">
             <summary>
-            Breaks the specified door, if it is not already broken.
+            Breaks the specified door. No effect if the door cannot be broken, or if it is already broken.
             </summary>
-            <returns>True if the door was broken, false if it was unable to be broken, or was already broken before.</returns>
+            <returns><see langword="true"/> if the door was broken, <see langword="false"/> if it was unable to be broken, or was already broken before.</returns>
         </member>
         <member name="M:Exiled.API.Features.Door.DamageDoor(System.Single,Interactables.Interobjects.DoorUtils.DoorDamageType)">
             <summary>
-            Damages the door, if it's breakable.
+            Damages the door. No effect if the door cannot be broken.
             </summary>
             <param name="amount">The amount of damage to deal.</param>
             <param name="type">The damage type to use.</param>
-            <returns>True if the door was damaged.</returns>
+            <returns><see langword="true"/> if the door was damaged.</returns>
         </member>
         <member name="M:Exiled.API.Features.Door.TryPryOpen">
             <summary>
-            Tries to pry the door open.
+            Tries to pry the door open. No effect if the door cannot be pried.
             </summary>
-            <returns>True if the door was able to be pried open.</returns>
+            <returns><see langword="true"/> if the door was able to be pried open.</returns>
         </member>
         <member name="M:Exiled.API.Features.Door.PlaySound(Exiled.API.Enums.DoorBeepType)">
             <summary>
@@ -2779,7 +2786,7 @@
         </member>
         <member name="M:Exiled.API.Features.Door.Unlock">
             <summary>
-            Unlocks the door.
+            Unlocks and clears all active locks on the door.
             </summary>
         </member>
         <member name="M:Exiled.API.Features.Door.RegisterDoorTypesOnLevelLoad">
@@ -3694,12 +3701,12 @@
         </member>
         <member name="P:Exiled.API.Features.Map.IntercomSpeaker">
             <summary>
-            Gets the <see cref="T:Exiled.API.Features.Player"/> that is using the intercom. Will be null if <see cref="P:Exiled.API.Features.Map.IntercomInUse"/> is false.
+            Gets the <see cref="T:Exiled.API.Features.Player"/> that is using the intercom. Will be <see langword="null"/> if <see cref="P:Exiled.API.Features.Map.IntercomInUse"/> is <see langword="false"/>.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Map.AmbientSoundPlayer">
             <summary>
-            Gets the <see cref="P:Exiled.API.Features.Map.AmbientSoundPlayer"/>.
+            Gets the <see cref="T:AmbientSoundPlayer"/>.
             </summary>
         </member>
         <member name="M:Exiled.API.Features.Map.FindParentRoom(UnityEngine.GameObject)">
@@ -3711,14 +3718,14 @@
         </member>
         <member name="M:Exiled.API.Features.Map.Broadcast(Exiled.API.Features.Broadcast,System.Boolean)">
             <summary>
-            Broadcasts a message to all players.
+            Broadcasts a message to all <see cref="T:Exiled.API.Features.Player">players</see>.
             </summary>
             <param name="broadcast">The <see cref="T:Exiled.API.Features.Broadcast"/> to be broadcasted.</param>
             <param name="shouldClearPrevious">Clears all players' broadcasts before sending the new one.</param>
         </member>
         <member name="M:Exiled.API.Features.Map.Broadcast(System.UInt16,System.String,Broadcast.BroadcastFlags,System.Boolean)">
             <summary>
-            Broadcasts a message to all players.
+            Broadcasts a message to all <see cref="T:Exiled.API.Features.Player">players</see>.
             </summary>
             <param name="duration">The duration in seconds.</param>
             <param name="message">The message that will be broadcast (supports Unity Rich Text formatting).</param>
@@ -3727,14 +3734,14 @@
         </member>
         <member name="M:Exiled.API.Features.Map.ShowHint(System.String,System.Single)">
             <summary>
-            Shows a hint to all players.
+            Shows a hint to all <see cref="T:Exiled.API.Features.Player">players</see>.
             </summary>
             <param name="message">The message that will be broadcasted (supports Unity Rich Text formatting).</param>
             <param name="duration">The duration in seconds.</param>
         </member>
         <member name="M:Exiled.API.Features.Map.ClearBroadcasts">
             <summary>
-            Clears all players' broadcasts.
+            Clears all <see cref="T:Exiled.API.Features.Player">players</see>' broadcasts.
             </summary>
         </member>
         <member name="M:Exiled.API.Features.Map.StartDecontamination">
@@ -3744,21 +3751,21 @@
         </member>
         <member name="M:Exiled.API.Features.Map.TurnOffAllLights(System.Single,Exiled.API.Enums.ZoneType)">
             <summary>
-            Turns off all lights of the facility.
+            Turns off all lights in the facility.
             </summary>
             <param name="duration">The duration of the blackout.</param>
             <param name="zoneTypes">The <see cref="T:Exiled.API.Enums.ZoneType"/>s to affect.</param>
         </member>
         <member name="M:Exiled.API.Features.Map.TurnOffAllLights(System.Single,System.Collections.Generic.IEnumerable{Exiled.API.Enums.ZoneType})">
             <summary>
-            Turns off all lights of the facility.
+            Turns off all lights in the facility.
             </summary>
             <param name="duration">The duration of the blackout.</param>
             <param name="zoneTypes">The <see cref="T:Exiled.API.Enums.ZoneType"/>s to affect.</param>
         </member>
         <member name="M:Exiled.API.Features.Map.LockAllDoors(System.Single,Exiled.API.Enums.ZoneType,Exiled.API.Enums.DoorLockType)">
             <summary>
-            Locks all doors of the facility.
+            Locks all <see cref="T:Exiled.API.Features.Door">doors</see> in the facility.
             </summary>
             <param name="duration">The duration of the lockdown.</param>
             <param name="zoneType">The <see cref="T:Exiled.API.Enums.ZoneType"/> to affect.</param>
@@ -3766,7 +3773,7 @@
         </member>
         <member name="M:Exiled.API.Features.Map.LockAllDoors(System.Single,System.Collections.Generic.IEnumerable{Exiled.API.Enums.ZoneType},Exiled.API.Enums.DoorLockType)">
             <summary>
-            Locks all doors of the facility.
+            Locks all <see cref="T:Exiled.API.Features.Door">doors</see> in the facility.
             </summary>
             <param name="duration">The duration of the lockdown.</param>
             <param name="zoneTypes">DoorLockType of the lockdown.</param>
@@ -3774,38 +3781,78 @@
         </member>
         <member name="M:Exiled.API.Features.Map.UnlockAllDoors(Exiled.API.Enums.ZoneType)">
             <summary>
-            Unlocks all doors of the facility.
+            Unlocks all <see cref="T:Exiled.API.Features.Door">doors</see> in the facility.
             </summary>
             <param name="zoneType">The <see cref="T:Exiled.API.Enums.ZoneType"/> to affect.</param>
         </member>
         <member name="M:Exiled.API.Features.Map.UnlockAllDoors(System.Collections.Generic.IEnumerable{Exiled.API.Enums.ZoneType})">
             <summary>
-            Unlocks all doors of the facility.
+            Unlocks all <see cref="T:Exiled.API.Features.Door">doors</see> in the facility.
             </summary>
             <param name="zoneTypes">The <see cref="T:Exiled.API.Enums.ZoneType"/>s to affect.</param>
         </member>
         <member name="M:Exiled.API.Features.Map.UnlockAllDoors">
             <summary>
-            Unlocks all doors in the facility.
+            Unlocks all <see cref="T:Exiled.API.Features.Door">doors</see> in the facility.
             </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Map.GetRandomRoom(Exiled.API.Enums.ZoneType)">
+            <summary>
+            Gets an random <see cref="T:Exiled.API.Features.Room"/>.
+            </summary>
+            <param name="type">Filters by <see cref="T:Exiled.API.Enums.ZoneType"/>.</param>
+            <returns><see cref="T:Exiled.API.Features.Room"/> object.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.GetRandomCamera">
+            <summary>
+            Gets an random <see cref="T:Camera079"/>.
+            </summary>
+            <returns><see cref="T:Camera079"/> object.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.GetRandomDoor(Exiled.API.Enums.ZoneType,System.Boolean)">
+            <summary>
+            Gets an random <see cref="T:Exiled.API.Features.Door"/>.
+            </summary>
+            <param name="type">Filters by <see cref="T:Exiled.API.Enums.ZoneType"/>.</param>
+            <param name="onlyUnbroken">Whether or not it filters broken doors.</param>
+            <returns><see cref="T:Exiled.API.Features.Door"/> object.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.GetRandomLift">
+            <summary>
+            Gets an random <see cref="T:Lift"/>.
+            </summary>
+            <returns><see cref="T:Lift"/> object.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.GetRandomLocker">
+            <summary>
+            Gets an random <see cref="T:MapGeneration.Distributors.Locker"/>.
+            </summary>
+            <returns><see cref="T:MapGeneration.Distributors.Locker"/> object.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.GetRandomPickup(ItemType)">
+            <summary>
+            Gets an random <see cref="T:Exiled.API.Features.Items.Pickup"/>.
+            </summary>
+            <param name="type">Filters by <see cref="T:ItemType"/>.</param>
+            <returns><see cref="T:Exiled.API.Features.Items.Pickup"/> object.</returns>
         </member>
         <member name="M:Exiled.API.Features.Map.GetCameraById(System.UInt16)">
             <summary>
-            Gets the camera with the given ID.
+            Gets the <see cref="T:Camera079">camera</see> with the given ID.
             </summary>
             <param name="cameraId">The camera id to be searched for.</param>
             <returns>The <see cref="T:Camera079"/> with the given ID.</returns>
         </member>
         <member name="M:Exiled.API.Features.Map.GetCameraByType(Exiled.API.Enums.CameraType)">
             <summary>
-            Gets the camera with the given camera type.
+            Gets the <see cref="T:Camera079">camera</see> with the given camera type.
             </summary>
             <param name="cameraType">The <see cref="T:Exiled.API.Enums.CameraType"/> to search for.</param>
             <returns>The <see cref="T:Camera079"/> with the given camera type.</returns>
         </member>
         <member name="M:Exiled.API.Features.Map.GetDoorByName(System.String)">
             <summary>
-            Gets the door with the given door name.
+            Gets the <see cref="T:Exiled.API.Features.Door">door</see> with the given door name.
             </summary>
             <param name="doorName">The door name.</param>
             <returns>The <see cref="T:Exiled.API.Features.Door"/> or null if a door with this name doesn't exist.</returns>

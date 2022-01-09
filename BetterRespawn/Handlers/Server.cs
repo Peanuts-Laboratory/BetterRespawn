@@ -10,7 +10,7 @@
 
     class Server
     {
-        private List<Player> getSCPList()
+        private List<Player> GetSCPList()
         {
             List<Player> scp_list = new List<Player>();
 
@@ -38,7 +38,7 @@
         }
 
 
-        private List<Player> swapSCPToDclass(List<Player> scp_list, int correct_number_scps)
+        private List<Player> SwapSCPToDclass(List<Player> scp_list, int correct_number_scps)
         {
             List<Player> new_dboy_list = new List<Player>();
             // remove random scps until we have the correct amount of scps
@@ -79,7 +79,7 @@
 
         public void BalanceSCPSpawnrate()
         {
-            Log.Info($"SCPSpawnrate config is set to: {BetterRespawn.Instance.Config.BalanceSCPSpawnrate}");
+            if (BetterRespawn.Instance.Config.debug) { Log.Info($"SCPSpawnrate config is set to: {BetterRespawn.Instance.Config.BalanceSCPSpawnrate}"); }
 
             if (BetterRespawn.Instance.Config.BalanceSCPSpawnrate == true) 
             {
@@ -92,8 +92,8 @@
 
                 Timing.CallDelayed(0.07f, () =>
                 {
-                    List<Player> scp_list = getSCPList();
-                    List<Player> new_dboy_list = swapSCPToDclass(scp_list, correct_number_scps);
+                    List<Player> scp_list = GetSCPList();
+                    List<Player> new_dboy_list = SwapSCPToDclass(scp_list, correct_number_scps);
 
                     Timing.CallDelayed(2f, () =>
                     {
@@ -111,7 +111,7 @@
             {
                 if (team == SpawnableTeamType.NineTailedFox)
                 {
-                    if (BetterRespawn.Instance.Config.debug) { Log.Info("Spawning ntf..."); }
+                    if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning ntf..."); }
                     int tickets = Respawn.NtfTickets;
                     while (tickets > 0)
                     {
