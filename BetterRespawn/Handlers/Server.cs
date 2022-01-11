@@ -110,70 +110,73 @@
 
         public void RespawnTicketChecker(RespawningTeamEventArgs ev)
         {
-            SpawnableTeamType team = ev.NextKnownTeam;
-            Timing.CallDelayed(1.5f, () =>
+            if (BetterRespawn.Instance.Config.RespawnTeams == true)
             {
-                if (team == SpawnableTeamType.NineTailedFox)
+                SpawnableTeamType team = ev.NextKnownTeam;
+                Timing.CallDelayed(1.5f, () =>
                 {
-                    if (BetterRespawn.Instance.Config.debug) { Log.Info("Spawning ntf..."); }
-                    int tickets = Respawn.NtfTickets;
-                    while (tickets > 0)
+                    if (team == SpawnableTeamType.NineTailedFox)
                     {
-                        foreach (var ply in Player.List)
+                        if (BetterRespawn.Instance.Config.debug) { Log.Info("Spawning ntf..."); }
+                        int tickets = Respawn.NtfTickets;
+                        while (tickets > 0)
                         {
-                            if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
+                            foreach (var ply in Player.List)
                             {
-                                if (BetterRespawn.Instance.Config.debug) { Log.Info($"Spawning {ply.Nickname} at {tickets} tickets"); }
-                                if (tickets >= 15)
+                                if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
                                 {
-                                    ply.SetRole(RoleType.NtfCaptain);
+                                    if (BetterRespawn.Instance.Config.debug) { Log.Info($"Spawning {ply.Nickname} at {tickets} tickets"); }
+                                    if (tickets >= 15)
+                                    {
+                                        ply.SetRole(RoleType.NtfCaptain);
+                                    }
+                                    else if (tickets >= 10)
+                                    {
+                                        ply.SetRole(RoleType.NtfSergeant);
+                                    }
+                                    else
+                                    {
+                                        ply.SetRole(RoleType.NtfPrivate);
+                                    }
+                                    Respawn.GrantTickets(team, -1);
+                                    break;
                                 }
-                                else if (tickets >= 10)
-                                {
-                                    ply.SetRole(RoleType.NtfSergeant);
-                                }
-                                else
-                                {
-                                    ply.SetRole(RoleType.NtfPrivate);
-                                }
-                                Respawn.GrantTickets(team, -1);
-                                break;
                             }
+                            tickets--;
                         }
-                        tickets--;
                     }
-                }
-                else if (team == SpawnableTeamType.ChaosInsurgency)
-                {
-                    if (BetterRespawn.Instance.Config.debug) { Log.Info("Spawning chaos..."); }
-                    int tickets = Respawn.ChaosTickets;
-                    while (tickets > 0)
+                    else if (team == SpawnableTeamType.ChaosInsurgency)
                     {
-                        foreach (var ply in Player.List)
+                        if (BetterRespawn.Instance.Config.debug) { Log.Info("Spawning chaos..."); }
+                        int tickets = Respawn.ChaosTickets;
+                        while (tickets > 0)
                         {
-                            if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
+                            foreach (var ply in Player.List)
                             {
-                                if (BetterRespawn.Instance.Config.debug) { Log.Info($"Spawning {ply.Nickname} at {tickets} tickets"); }
-                                if (tickets >= 15)
+                                if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
                                 {
-                                    ply.SetRole(RoleType.ChaosRepressor);
+                                    if (BetterRespawn.Instance.Config.debug) { Log.Info($"Spawning {ply.Nickname} at {tickets} tickets"); }
+                                    if (tickets >= 15)
+                                    {
+                                        ply.SetRole(RoleType.ChaosRepressor);
+                                    }
+                                    else if (tickets >= 10)
+                                    {
+                                        ply.SetRole(RoleType.ChaosMarauder);
+                                    }
+                                    else
+                                    {
+                                        ply.SetRole(RoleType.ChaosRifleman);
+                                    }
+                                    Respawn.GrantTickets(team, -1);
+                                    break;
                                 }
-                                else if (tickets >= 10)
-                                {
-                                    ply.SetRole(RoleType.ChaosMarauder);
-                                }
-                                else
-                                {
-                                    ply.SetRole(RoleType.ChaosRifleman);
-                                }
-                                Respawn.GrantTickets(team, -1);
-                                break;
                             }
+                            tickets--;
                         }
-                        tickets--;
                     }
-                }
-            });
+                });
+            }
         }
     }
 }
