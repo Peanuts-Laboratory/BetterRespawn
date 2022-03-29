@@ -32,11 +32,11 @@
                     if (team == SpawnableTeamType.NineTailedFox)
                     {
                         if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning ntf..."); }
-                        int tickets = Respawn.NtfTickets;
+                        uint tickets = Respawn.NtfTickets;
                         while (tickets > 0 && wait_list.IsEmpty() == false)
                         {
                             Player ply = wait_list.Dequeue();
-                            if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
+                            if (ply.IsDead == true && !ply.IsOverwatchEnabled)
                             {
                                 if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
                                 if (tickets >= 15)
@@ -60,11 +60,11 @@
                     else if (team == SpawnableTeamType.ChaosInsurgency)
                     {
                         if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning chaos..."); }
-                        int tickets = Respawn.ChaosTickets;
+                        uint tickets = Respawn.ChaosTickets;
                         while (tickets > 0 && wait_list.IsEmpty() == false)
                         {
                             Player ply = wait_list.Dequeue();
-                            if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
+                            if (ply.IsDead == true && !ply.IsOverwatchEnabled)
                             {
                                 if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
                                 if (tickets >= 15)
