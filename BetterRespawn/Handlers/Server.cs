@@ -4,106 +4,21 @@
     using Exiled.Events.EventArgs;
     using Respawning;
     using MEC;
-    using System;
-    using System.Linq;
     using System.Collections.Generic;
 
     class Server
     {
-        private List<Player> GetSCPList()
-        {
-            List<Player> scp_list = new List<Player>();
-
-            if (BetterRespawn.Instance.Config.debug) { Log.Debug("Generating scp_list"); }
-
-            foreach (var ply in Player.List)
-            {
-                //if (BetterRespawn.Instance.Config.debug) { Log.Info($"{ply.Nickname} is scp: {ply.IsScp}"); }
-                if (ply.IsScp)
-                {
-                    if (ply.Role == RoleType.Scp079)
-                    {
-                        if (BetterRespawn.Instance.Config.debug) { Log.Debug($">>> {ply.Nickname} is computer, ignoring"); }
-                    }
-                    else
-                    {
-                        if (BetterRespawn.Instance.Config.debug) { Log.Debug($">>> Adding {ply.Nickname} to scp_list"); }
-
-                        scp_list.Add(ply);
-                    }
-                }
-            }
-            return scp_list;
-        }
-
-
-        private List<Player> SwapSCPToScientist(List<Player> scp_list, int correct_number_scps)
-        {
-            List<Player> new_scientist_list = new List<Player>();
-            // remove random scps until we have the correct amount of scps
-            while (scp_list.Count() > correct_number_scps-1)
-            {
-                int index = UnityEngine.Random.Range(0, scp_list.Count()-1);
-
-                if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Removing {scp_list[index].Nickname} as role {scp_list[index].Role} at index {index}"); }
-
-                scp_list[index].SetRole(RoleType.Scientist);
-                new_scientist_list.Add(scp_list[index]);
-                scp_list.RemoveAt(index);
-            }
-            return new_scientist_list;
-        }
-
-
-        private void FixHealth(List<Player> new_scientist_list)
-        {
-            foreach (var ply in new_scientist_list)
-            {
-                Timing.CallDelayed(0.5f, () =>
-                {
-                    if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Setting {ply.Nickname} hp to 100"); }
-
-                    ply.MaxHealth = 100;
-                    ply.Health = 100;
-                });
-            }
-        }
-
-
+        Queue<Player> wait_list;
         public void OnWaitingForPlayers()
         {
             Log.Info(message: "Loaded and waiting for players...");
+            wait_list = new Queue<Player>();
         }
 
 
-        public void BalanceSCPSpawnrate()
+        public void onDeath(DyingEventArgs ev)
         {
-            if (BetterRespawn.Instance.Config.debug) { Log.Debug($"SCPSpawnrate config is set to: {BetterRespawn.Instance.Config.BalanceSCPSpawnrate}"); }
-
-            if (BetterRespawn.Instance.Config.BalanceSCPSpawnrate == true) 
-            {
-                int number_of_players = Player.List.Count();
-                int correct_number_scps = (int)Math.Ceiling((double)number_of_players / 10);
-
-                if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Calculating variables..."); }
-
-                if (BetterRespawn.Instance.Config.debug) { Log.Debug($"number_of_players: {number_of_players} | correct_number_scps {correct_number_scps}"); }
-
-                if (number_of_players > 10)
-                {
-                    Timing.CallDelayed(0.07f, () =>
-                    {
-                        List<Player> scp_list = GetSCPList();
-                        List<Player> new_scientist_list = SwapSCPToScientist(scp_list, correct_number_scps);
-
-                        Timing.CallDelayed(2f, () =>
-                        {
-                            FixHealth(new_scientist_list);
-                        });
-                    });
-                }
-                
-            }
+            wait_list.Enqueue(ev.Target);
         }
 
 
@@ -118,28 +33,26 @@
                     {
                         if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning ntf..."); }
                         int tickets = Respawn.NtfTickets;
-                        while (tickets > 0)
+                        while (tickets > 0 && wait_list.IsEmpty() == false)
                         {
-                            foreach (var ply in Player.List)
+                            Player ply = wait_list.Dequeue();
+                            if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
                             {
-                                if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
+                                if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
+                                if (tickets >= 15)
                                 {
-                                    if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
-                                    if (tickets >= 15)
-                                    {
-                                        ply.SetRole(RoleType.NtfCaptain);
-                                    }
-                                    else if (tickets >= 10)
-                                    {
-                                        ply.SetRole(RoleType.NtfSergeant);
-                                    }
-                                    else
-                                    {
-                                        ply.SetRole(RoleType.NtfPrivate);
-                                    }
-                                    Respawn.GrantTickets(team, -1);
-                                    break;
+                                    ply.SetRole(RoleType.NtfCaptain);
                                 }
+                                else if (tickets >= 10)
+                                {
+                                    ply.SetRole(RoleType.NtfSergeant);
+                                }
+                                else
+                                {
+                                    ply.SetRole(RoleType.NtfPrivate);
+                                }
+                                Respawn.GrantTickets(team, -1);
+                                break;
                             }
                             tickets--;
                         }
@@ -148,28 +61,26 @@
                     {
                         if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning chaos..."); }
                         int tickets = Respawn.ChaosTickets;
-                        while (tickets > 0)
+                        while (tickets > 0 && wait_list.IsEmpty() == false)
                         {
-                            foreach (var ply in Player.List)
+                            Player ply = wait_list.Dequeue();
+                            if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
                             {
-                                if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
+                                if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
+                                if (tickets >= 15)
                                 {
-                                    if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
-                                    if (tickets >= 15)
-                                    {
-                                        ply.SetRole(RoleType.ChaosRepressor);
-                                    }
-                                    else if (tickets >= 10)
-                                    {
-                                        ply.SetRole(RoleType.ChaosMarauder);
-                                    }
-                                    else
-                                    {
-                                        ply.SetRole(RoleType.ChaosRifleman);
-                                    }
-                                    Respawn.GrantTickets(team, -1);
-                                    break;
+                                    ply.SetRole(RoleType.ChaosRepressor);
                                 }
+                                else if (tickets >= 10)
+                                {
+                                    ply.SetRole(RoleType.ChaosMarauder);
+                                }
+                                else
+                                {
+                                    ply.SetRole(RoleType.ChaosRifleman);
+                                }
+                                Respawn.GrantTickets(team, -1);
+                                break;
                             }
                             tickets--;
                         }
