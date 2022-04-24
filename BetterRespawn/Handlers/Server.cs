@@ -4,8 +4,6 @@
     using Exiled.Events.EventArgs;
     using Respawning;
     using MEC;
-    using System;
-    using System.Linq;
     using System.Collections.Generic;
 
     class Server
@@ -13,8 +11,8 @@
         public void OnWaitingForPlayers()
         {
             Log.Info(message: "Loaded and waiting for players...");
+            wait_list = new Queue<Player>();
         }
-
 
         public void RespawnTicketChecker(RespawningTeamEventArgs ev)
         {
@@ -26,29 +24,27 @@
                     if (team == SpawnableTeamType.NineTailedFox)
                     {
                         if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning ntf..."); }
-                        int tickets = Respawn.NtfTickets;
-                        while (tickets > 0)
+                        uint tickets = Respawn.NtfTickets;
+                        while (tickets > 0 && wait_list.IsEmpty() == false)
                         {
-                            foreach (var ply in Player.List)
+                            Player ply = wait_list.Dequeue();
+                            if (ply.IsDead == true && !ply.IsOverwatchEnabled)
                             {
-                                if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
+                                if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
+                                if (tickets >= 15)
                                 {
-                                    if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
-                                    if (tickets >= 15)
-                                    {
-                                        ply.SetRole(RoleType.NtfCaptain);
-                                    }
-                                    else if (tickets >= 10)
-                                    {
-                                        ply.SetRole(RoleType.NtfSergeant);
-                                    }
-                                    else
-                                    {
-                                        ply.SetRole(RoleType.NtfPrivate);
-                                    }
-                                    Respawn.GrantTickets(team, -1);
-                                    break;
+                                    ply.SetRole(RoleType.NtfCaptain);
                                 }
+                                else if (tickets >= 10)
+                                {
+                                    ply.SetRole(RoleType.NtfSergeant);
+                                }
+                                else
+                                {
+                                    ply.SetRole(RoleType.NtfPrivate);
+                                }
+                                Respawn.GrantTickets(team, -1);
+                                break;
                             }
                             tickets--;
                         }
@@ -56,29 +52,27 @@
                     else if (team == SpawnableTeamType.ChaosInsurgency)
                     {
                         if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning chaos..."); }
-                        int tickets = Respawn.ChaosTickets;
-                        while (tickets > 0)
+                        uint tickets = Respawn.ChaosTickets;
+                        while (tickets > 0 && wait_list.IsEmpty() == false)
                         {
-                            foreach (var ply in Player.List)
+                            Player ply = wait_list.Dequeue();
+                            if (ply.IsDead == true && !ply.IsOverwatchEnabled)
                             {
-                                if (ply.Team == Team.RIP && !ply.IsOverwatchEnabled)
+                                if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
+                                if (tickets >= 15)
                                 {
-                                    if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
-                                    if (tickets >= 15)
-                                    {
-                                        ply.SetRole(RoleType.ChaosRepressor);
-                                    }
-                                    else if (tickets >= 10)
-                                    {
-                                        ply.SetRole(RoleType.ChaosMarauder);
-                                    }
-                                    else
-                                    {
-                                        ply.SetRole(RoleType.ChaosRifleman);
-                                    }
-                                    Respawn.GrantTickets(team, -1);
-                                    break;
+                                    ply.SetRole(RoleType.ChaosRepressor);
                                 }
+                                else if (tickets >= 10)
+                                {
+                                    ply.SetRole(RoleType.ChaosMarauder);
+                                }
+                                else
+                                {
+                                    ply.SetRole(RoleType.ChaosRifleman);
+                                }
+                                Respawn.GrantTickets(team, -1);
+                                break;
                             }
                             tickets--;
                         }
