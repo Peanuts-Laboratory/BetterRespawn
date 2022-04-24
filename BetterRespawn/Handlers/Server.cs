@@ -8,19 +8,11 @@
 
     class Server
     {
-        Queue<Player> wait_list;
         public void OnWaitingForPlayers()
         {
             Log.Info(message: "Loaded and waiting for players...");
             wait_list = new Queue<Player>();
         }
-
-
-        public void onDeath(DyingEventArgs ev)
-        {
-            wait_list.Enqueue(ev.Target);
-        }
-
 
         public void RespawnTicketChecker(RespawningTeamEventArgs ev)
         {
