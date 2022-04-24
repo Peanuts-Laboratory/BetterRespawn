@@ -39,7 +39,6 @@
 
             Server.WaitingForPlayers += server.OnWaitingForPlayers;
             Server.RespawningTeam += server.RespawnTicketChecker;
-            Server.RoundStarted += server.BalanceSCPSpawnrate;
         }
 
 
@@ -47,7 +46,6 @@
         {
             Server.WaitingForPlayers -= server.OnWaitingForPlayers;
             Server.RespawningTeam -= server.RespawnTicketChecker;
-            Server.RoundStarted -= server.BalanceSCPSpawnrate;
 
             server = null;
         }
