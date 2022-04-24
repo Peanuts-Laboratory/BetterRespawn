@@ -11,7 +11,6 @@
         public void OnWaitingForPlayers()
         {
             Log.Info(message: "Loaded and waiting for players...");
-            wait_list = new Queue<Player>();
         }
 
         public void RespawnTicketChecker(RespawningTeamEventArgs ev)
@@ -25,10 +24,9 @@
                     {
                         if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning ntf..."); }
                         uint tickets = Respawn.NtfTickets;
-                        while (tickets > 0 && wait_list.IsEmpty() == false)
+                        foreach (Player ply in Player.List)
                         {
-                            Player ply = wait_list.Dequeue();
-                            if (ply.IsDead == true && !ply.IsOverwatchEnabled)
+                            if (tickets != 0 && ply.IsDead == true && !ply.IsOverwatchEnabled)
                             {
                                 if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
                                 if (tickets >= 15)
@@ -53,10 +51,9 @@
                     {
                         if (BetterRespawn.Instance.Config.debug) { Log.Debug("Spawning chaos..."); }
                         uint tickets = Respawn.ChaosTickets;
-                        while (tickets > 0 && wait_list.IsEmpty() == false)
+                        foreach (Player ply in Player.List)
                         {
-                            Player ply = wait_list.Dequeue();
-                            if (ply.IsDead == true && !ply.IsOverwatchEnabled)
+                            if (tickets != 0 && ply.IsDead == true && !ply.IsOverwatchEnabled)
                             {
                                 if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
                                 if (tickets >= 15)
